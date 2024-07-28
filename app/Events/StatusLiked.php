@@ -2,11 +2,12 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class StatusLiked implements ShouldBroadcast
 {
@@ -36,6 +37,6 @@ class StatusLiked implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return new PrivateChannel('status.1');
+        return new Channel('status.1');
     }
 }

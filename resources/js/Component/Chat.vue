@@ -16,9 +16,23 @@ import {warn} from '@vue/runtime-core';
 
 export default {
     mounted() {
-        Echo.channel('chat-room.1')
-            .listen('ChatMessageWasReceived', (e) => {
-                console.log(e.user, e.chatMessage);
+        window.Echo.private('status')
+        .listen('StatusLiked', (e) => {
+             alert(e.message)
+             console.log(e.message)
+        });
+        window.Echo.private('chat')
+            .listen('MessageSent', (e) => {
+                alert(e.message)
+            
+            });
+
+
+            window.Echo.private('match')
+            .listen('GoalScored', (e) => {
+             console.log("match",e)
+
+                alert(e.message)
             });
 
     },

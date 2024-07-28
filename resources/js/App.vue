@@ -21,11 +21,37 @@ export default {
     };
   },
   mounted() {
-    window.Echo.channel('chat-room.1')
+    window.Echo.channel('messege')
       .listen('MessegeSent', (e) => {
         alert(e.message)
         this.messages.push(e.message);
       });
+
+      Echo.channel('messege')
+      .listen('.server.created', function (e) {
+        alert(e.message)
+        this.messages.push(e.message);
+      });
+
+
+      window.Echo.channel('status')
+        .listen('StatusLiked', (e) => {
+             alert(e.message)
+             console.log(e.message)
+        });
+        window.Echo.private('chat')
+            .listen('MessageSent', (e) => {
+                alert(e.message)
+            });
+
+
+            window.Echo.private('match')
+            .listen('GoalScored', (e) => {
+             console.log("match",e)
+
+                alert(e.message)
+            });
+
   }
 };
 </script>

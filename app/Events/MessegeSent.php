@@ -28,11 +28,14 @@ class MessegeSent implements ShouldBroadcast
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
-   
+    public function broadcastAs(): string
+    {
+        return 'server.created';
+    }
     public function broadcastOn(): array
     {
         return [
-            new Channel('chat-room.1'),
+            new Channel('messege'),
         ];
     }
 }
